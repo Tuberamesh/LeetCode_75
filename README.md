@@ -47,10 +47,6 @@ The study plan covers problems across:
 
 **Java**
 
-### 🌐 Platform
-
-[LeetCode](https://leetcode.com/u/rameshdecoder/)
-
 ### 🔗 Profile
 
 [View my LeetCode Profile](https://leetcode.com/u/rameshdecoder/)
