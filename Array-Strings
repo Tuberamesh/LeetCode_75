@@ -520,3 +520,29 @@ class Solution:
             maxLength = max(maxLength, right - left)
 
         return maxLength
+
+
+//question no 724
+// Find Pivot Index
+//time complexity: O(n)
+//space complexity: O(1)
+
+        class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+
+        total=0
+
+        for i in range(len(nums)):
+            total+=nums[i]
+        
+        left_sum=0
+        for i in range(len(nums)):
+
+            right_sum=total-left_sum-nums[i]
+            if(right_sum==left_sum):
+                return i
+            left_sum+=nums[i]
+        return -1
+        
+
+        
