@@ -582,3 +582,23 @@ class Solution {
     }
 }
 
+
+
+//question no 1207
+// Unique Number of Occurrences
+//time complexity: O(n)
+//space complexity: O(n)
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        count={}
+
+        for num in arr:
+            count[num]=count.get(num,0)+1
+
+        frequency=set()
+
+        for n in count.values():
+            if n in frequency:
+                return False
+            frequency.add(n)
+        return True
