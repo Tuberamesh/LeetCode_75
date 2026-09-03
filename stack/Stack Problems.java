@@ -68,3 +68,41 @@ class Solution {
         return result;
     }
 }
+
+
+//problem name: Decode String
+//time complexity: O(n)
+//space complexity: O(n)
+class Solution:
+    def decodeString(self, s: str) -> str:
+
+        nums = []
+        strs = []
+
+        num = 0
+        result = ""
+
+        for c in s:
+
+            if c.isdigit():
+                num = num * 10 + int(c)
+
+            elif c == '[':
+                nums.append(num)
+                strs.append(result)
+
+                num = 0
+                result = ""
+
+            elif c == ']':
+                count = nums.pop()
+                previous = strs.pop()
+
+                temp = result * count
+
+                result = previous + temp
+
+            else:
+                result += c
+
+        return result
