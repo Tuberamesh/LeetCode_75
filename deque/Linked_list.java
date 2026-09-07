@@ -91,3 +91,51 @@ class Solution {
         
     }
 }
+
+
+
+//problem name: Maximum Twin Sum of a Linked List
+//time complexity: O(n)
+//space complexity: O(1)
+class Solution {
+    public int pairSum(ListNode head) {
+
+        // 1. Find the middle of the linked list
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // 2. Reverse the second half
+        ListNode prev = null;
+
+        while (slow != null) {
+            ListNode front = slow.next;
+
+            slow.next = prev;
+
+            prev = slow;
+            slow = front;
+        }
+
+        // 3. Compare first half with reversed second half
+        ListNode first = head;
+        ListNode second = prev;
+
+        int maxSum = 0;
+
+        while (second != null) {
+            int sum = first.val + second.val;
+
+            maxSum = Math.max(maxSum, sum);
+
+            first = first.next;
+            second = second.next;
+        }
+
+        return maxSum;
+    }
+}
