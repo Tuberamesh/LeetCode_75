@@ -57,3 +57,37 @@ class Solution:
             return count
         
         return dfs(root,root.val)
+    
+
+
+
+#Path Sum III
+#time complexity: O(n^2)
+#space complexity: O(n)
+
+class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+        
+
+        def findPath(node,target):
+            
+            if node is None:
+                return 0
+            
+            count=0
+
+            if(node.val==target):
+                count+=1
+
+            count+=findPath(node.left,target-node.val)
+            count+=findPath(node.right,target-node.val)
+
+            return count
+
+        if root is None:
+            return 0
+        return (
+            findPath(root,targetSum)
+            + self.pathSum(root.left,targetSum)
+            + self.pathSum(root.right,targetSum)
+        )
