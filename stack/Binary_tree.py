@@ -91,3 +91,37 @@ class Solution:
             + self.pathSum(root.left,targetSum)
             + self.pathSum(root.right,targetSum)
         )
+
+
+
+
+
+  #Longest ZigZag Path in a Binary Tree
+#time complexity: O(n)
+#space complexity: O(n)
+
+class Solution:
+    def longestZigZag(self, root: Optional[TreeNode]) -> int:
+ 
+        ans = 0
+
+        def dfs(node, direction, length):
+            nonlocal ans
+
+            if node is None:
+                return
+
+            ans = max(ans, length)
+
+            if direction == "left":
+                dfs(node.left, "right", length + 1)
+                dfs(node.right, "left", 1)
+
+            else:
+                dfs(node.right, "left", length + 1)
+                dfs(node.left, "right", 1)
+
+        dfs(root, "left", 0)
+        dfs(root, "right", 0)
+
+        return ans
