@@ -218,3 +218,24 @@ class Solution:
             level += 1
 
         return answer
+
+
+
+    #Search in a Binary Search Tree
+    #time complexity: O(n)
+    #space complexity: O(n)
+
+    class Solution:
+    def searchBST(self, root: TreeNode | None, val: int) -> TreeNode | None:
+        
+
+        if root is None:
+            return None
+
+        if root.val==val:
+            return root
+
+        if val < root.val:
+            return self.searchBST(root.left,val)
+
+        return self.searchBST(root.right,val)
