@@ -1,0 +1,17 @@
+
+# Graph, DFS
+#time complexity: O(n+m) where n is the number of rooms and m is the number of keys
+#space complexity: O(n) where n is the number of rooms
+class Solution:
+    def canVisitAllRooms(self, rooms: list[list[int]]) -> bool:
+        visited=set()
+
+        def dfs(room):
+            visited.add(room)
+
+            for key in rooms[room]:
+                if key not in visited:
+                    dfs(key)
+        dfs(0)
+
+        return len(visited)==len(rooms)
