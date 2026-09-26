@@ -41,3 +41,33 @@ class Solution:
                 dfs(city)
 
         return provinces
+
+
+#problem 1466. Reorder Routes to Make All Paths Lead to the City Zero
+#time complexity: O(n) where n is the number of cities
+#space complexity: O(n) where n is the number of cities
+class Solution:
+    def minReorder(self, n: int, connections: list[list[int]]) -> int:
+
+        graph = [[] for _ in range(n)]
+
+        for a, b in connections:
+            graph[a].append((b, 1))
+            graph[b].append((a, 0))
+
+        visited = set()
+
+        def dfs(city):
+            visited.add(city)
+
+            changes = 0
+
+            for neighbor, cost in graph[city]:
+
+                if neighbor not in visited:
+                    changes += cost
+                    changes += dfs(neighbor)
+
+            return changes
+
+        return dfs(0)
