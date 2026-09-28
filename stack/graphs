@@ -71,3 +71,49 @@ class Solution:
             return changes
 
         return dfs(0)
+    
+
+
+#problem 399. Evaluate Division
+#time complexity: O(n+m) where n is the number of equations and m is the number of queries
+#space complexity: O(n) where n is the number of equations
+    from typing import List
+from collections import defaultdict
+from typing import List
+
+class Solution:
+    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+        graph = defaultdict(list)
+
+        # Build graph
+        for (a, b), value in zip(equations, values):
+            graph[a].append((b, value))
+            graph[b].append((a, 1 / value))
+
+        def dfs(curr, target, visited):
+            if curr == target:
+                return 1.0
+
+            visited.add(curr)
+
+            for neighbor, weight in graph[curr]:
+                if neighbor not in visited:
+                    result = dfs(neighbor, target, visited)
+
+                    if result != -1:
+                        return weight * result
+
+            return -1.0
+
+        answer = []
+
+        # Solve each query
+        for a, b in queries:
+            if a not in graph or b not in graph:
+                answer.append(-1.0)
+            elif a == b:
+                answer.append(1.0)
+            else:
+                answer.append(dfs(a, b, set()))
+
+        return answer
