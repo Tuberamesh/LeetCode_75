@@ -10,3 +10,17 @@ class Solution:
             Max = max(sum, Max)
 
         return Max
+
+#LeetCode 283 — Move Zeroes
+class Solution:
+    def moveZeroes(self, nums: list[int]) -> None:
+        k = []
+        l = []
+
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                k.append(nums[i])
+            else:
+                l.append(nums[i])
+
+        nums[:] = l + k
