@@ -47,3 +47,23 @@ class Solution:
             s2[c1]=s2.get(c1,0)+1
         
         return s1==s2
+
+
+#problem 929
+#time complexity: O(n)
+#space complexity: O(n)
+class Solution:
+    def numUniqueEmails(self, emails: list[str]) -> int:
+        
+        unique=set()
+
+        for email in emails:
+
+            local,domain=email.split("@")
+
+            local=local.split("+")[0]
+            local=local.replace(".","")
+
+            unique.add(local+"@"+domain)
+        
+        return len(unique)
