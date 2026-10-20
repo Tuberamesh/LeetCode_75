@@ -24,3 +24,26 @@ class Solution:
                 l.append(nums[i])
 
         nums[:] = l + k
+
+
+
+
+#anagram problem 242
+#time complexity: O(n)
+#space complexity: O(n)
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        
+        if len(s)!=len(t):
+            return False
+
+        s1={}
+        s2={}
+
+        for c in s:
+            s1[c]=s1.get(c,0)+1
+
+        for c1 in t:
+            s2[c1]=s2.get(c1,0)+1
+        
+        return s1==s2
