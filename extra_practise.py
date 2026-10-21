@@ -91,3 +91,16 @@ class Solution:
 class Solution:
     def reverseWords(self, s: str) -> str:
         return " ".join(s.split()[::-1])
+
+
+#problem 1
+#time complexity: O(n^2)
+#space complexity: O(1)
+class Solution:
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
+        for i in range(len(nums)):
+            for j in range(i+1,len(nums)):
+                if nums[i]+nums[j]==target:
+                    return [i,j]
+
+        return []
