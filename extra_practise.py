@@ -83,3 +83,11 @@ class Solution:
                 freq[word]=freq.get(word,0)+1
         
         return max(freq, key=freq.get)
+
+
+#problem 151
+#time complexity: O(n)
+#space complexity: O(n)
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        return " ".join(s.split()[::-1])
