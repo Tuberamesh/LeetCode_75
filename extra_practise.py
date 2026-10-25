@@ -124,7 +124,7 @@ class Solution:
         return list(group.values())
 
 
-#problem 128
+#problem 128 longest consecutive sequence
 #time complexity: O(nlogn)
 #space complexity: O(n)
 class Solution:
