@@ -142,3 +142,24 @@ class Solution:
             longest=max(longest, count)
     
         return longest
+
+
+#problem 811 subdomain visit count
+#time complexity: O(n)
+#space complexity: O(n)
+from collections import defaultdict
+class Solution:
+    def subdomainVisits(self, cpdomains: list[str]) -> list[str]:
+        counts=defaultdict(int)
+
+        for entry in cpdomains:
+            count, domain=entry.split()
+            count=int(count)
+
+            parts=domain.split(".")
+
+            for i in range(len(parts)):
+                subdomain=".".join(parts[i:])
+                counts[subdomain]+=count
+            
+        return [f"{count} {domain}" for domain, count in counts.items()]
