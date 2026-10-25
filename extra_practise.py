@@ -122,3 +122,23 @@ class Solution:
             group[key].append(word)
 
         return list(group.values())
+
+
+#problem 128
+#time complexity: O(nlogn)
+#space complexity: O(n)
+class Solution:
+    def longestConsecutive(self, nums: list[int]) -> int:
+        if not nums:
+            return 0
+        nums=sorted(set(nums))
+        count=longest=1
+        for i in range(1,len(nums)):
+            if nums[i]==nums[i-1]+1:
+                count+=1
+            else:
+                count=1
+            
+            longest=max(longest, count)
+    
+        return longest
