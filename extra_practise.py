@@ -193,3 +193,26 @@ class LRUCache:
         if len(self.cache) > self.capacity:
             self.cache.popitem(last=False)
       
+
+
+
+#problem 167 two sum II
+#time complexity: O(n)
+#space complexity: O(1)
+    class Solution:
+    def twoSum(self, numbers: list[int], target: int) -> list[int]:
+        left=0
+        right=len(numbers)-1
+
+        while left<right:
+            total=numbers[left]+numbers[right]
+
+            if total==target:
+                return [left+1, right+1]
+            elif target > total:
+                left+=1
+            else:
+                right-=1
+            
+        return []
+                
