@@ -254,3 +254,22 @@ class Solution:
                     right -= 1
 
         return result
+
+#problem 283 move zeroes
+#time complexity: O(n)
+#space complexity: O(n)
+    class Solution:
+    def moveZeroes(self, nums: list[int]) -> None:
+        if len(nums)==0:
+            return 
+        if len(nums)==1:
+            return
+        k=[]
+        l=[]
+    
+        for i in range(len(nums)):
+            if nums[i]==0:
+                k.append(nums[i])
+            else:
+                l.append(nums[i])
+        nums[:]=l+k
