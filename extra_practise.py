@@ -334,3 +334,22 @@ class Solution:
             maxsum=max(maxsum, right-left+1)
 
         return maxsum
+
+#problem 209 minimum size subarray sum
+#time complexity: O(n)
+#space complexity: O(1)
+class Solution:
+    def minSubArrayLen(self, target: int, nums: list[int]) -> int:
+        left=0
+        minlen=float('inf')
+        sum=0
+
+        for right in range(len(nums)):
+             sum +=nums[right]
+        
+             while sum >= target:
+                 minlen=min(minlen, right-left+1)
+                 sum -=nums[left]
+                 left+=1
+
+        return 0 if minlen == float('inf') else minlen
