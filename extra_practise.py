@@ -316,3 +316,21 @@ class Solution:
             MaxSum=max(MaxSum, sum)
 
         return MaxSum/k
+
+#problem 3 longest substring without repeating characters
+#time complexity: O(n)
+#space complexity: O(n)
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        words=set()
+        left=0
+        maxsum=0
+
+        for right in range(len(s)):
+            while s[right] in words:
+                words.remove(s[left])
+                left+=1
+            words.add(s[right])
+            maxsum=max(maxsum, right-left+1)
+
+        return maxsum
