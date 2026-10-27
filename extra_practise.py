@@ -296,3 +296,23 @@ class Solution:
                 right-=1
             
         return True
+
+
+#problem 643 maximum average subarray I
+#time complexity: O(n)
+#space complexity: O(1)
+class Solution:
+    def findMaxAverage(self, nums: list[int], k: int) -> float:
+        sum=0
+        for i in range(k):
+            sum += nums[i]
+        
+        MaxSum=sum
+
+        for i in range(k,len(nums)):
+            sum+=nums[i]
+            sum-=nums[i-k]
+
+            MaxSum=max(MaxSum, sum)
+
+        return MaxSum/k
