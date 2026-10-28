@@ -403,3 +403,37 @@ class Solution:
                     right = mid - 1
 
         return -1
+
+
+
+
+#problem 34 find first and last position of element in sorted array
+#time complexity: O(log n)
+#space complexity: O(1)
+
+class Solution:
+    def searchRange(self, nums: list[int], target: int) -> list[int]:
+        def findBound(first):
+            left = 0
+            right = len(nums) - 1
+            result = -1
+
+            while left <= right:
+                mid = (left + right) // 2
+
+                if nums[mid] == target:
+                    result = mid
+
+                    if first:
+                        right = mid - 1
+                    else:
+                        left = mid + 1
+
+                elif nums[mid] < target:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+
+            return result
+
+        return [findBound(True), findBound(False)]
